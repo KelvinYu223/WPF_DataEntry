@@ -93,7 +93,7 @@ namespace WpfApp
             }
             else
             {
-                MessageBox.Show("Please fill in all the details!");
+                MessageBox.Show("Please fill in all the details!", "Info", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
         private void OnClickNuke(object sender, RoutedEventArgs e)
@@ -123,7 +123,7 @@ namespace WpfApp
                         {
                             MessageBoxButton button = MessageBoxButton.YesNo;
                             MessageBoxResult result;
-                            result = MessageBox.Show("Are you sure?", "", button);
+                            result = MessageBox.Show("Are you sure?", "Delete All Data", button, MessageBoxImage.Question);
                             if (result == MessageBoxResult.Yes)
                             {
                                 names.Items.Clear();
@@ -132,7 +132,7 @@ namespace WpfApp
                         }
                         else
                         {
-                            MessageBox.Show("List is Empty");
+                            MessageBox.Show("List is Empty", "Info", MessageBoxButton.OK, MessageBoxImage.Warning);
                         }
                     }
                     catch (Exception ex)
