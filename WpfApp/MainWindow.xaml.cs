@@ -15,7 +15,34 @@ namespace WpfApp
         }
         private void OnClick(object sender, RoutedEventArgs e)
         {
-            if (!string.IsNullOrWhiteSpace(txtName.Text) && !names.Items.Contains(txtName.Text) && !string.IsNullOrWhiteSpace(txtLocation.Text) && !names.Items.Contains(txtLocation.Text) && !string.IsNullOrWhiteSpace(txtEmail.Text) && !names.Items.Contains(txtEmail.Text))
+            List<int> list = new List<int>();
+
+            if (string.IsNullOrWhiteSpace(txtName.Text))
+            {
+                list.Add(1);
+                MessageBox.Show("Please fill in the name!", "Empty Name", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            if (string.IsNullOrWhiteSpace(txtLocation.Text))
+            {
+                list.Add(2);
+                MessageBox.Show("Please fill in the location!", "Empty Location", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            if (string.IsNullOrEmpty(txtEmail.Text))
+            {
+                list.Add(3);
+                MessageBox.Show("Please fill in the email!", "Empty Email", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            if (names.Items.Contains(txtName.Text))
+            {
+                list.Add(4);
+                MessageBox.Show("Name already exists!", "Duplicate Name", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            if (names.Items.Contains(txtEmail.Text))
+            {
+                list.Add(5);
+                MessageBox.Show("Email already exists!", "Duplicate Email", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            else if(list.Count == 0)
             {
                 name = txtName.Text;
                 location = txtLocation.Text;
@@ -64,8 +91,6 @@ namespace WpfApp
                         names.Items.Add(location);
                         names.Items.Add(email);
 
-
-
                         try
                         {
                             connection.Open();
@@ -90,10 +115,6 @@ namespace WpfApp
                 txtName.Clear();
                 txtLocation.Clear();
                 txtEmail.Clear();
-            }
-            else
-            {
-                MessageBox.Show("Please fill in all the details!", "Info", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
         private void OnClickNuke(object sender, RoutedEventArgs e)
