@@ -28,7 +28,7 @@
             <Label>Email:</Label>
             <TextBox x:Name="txtEmail"/>
             <Button x:Name="btnSub" Margin="0,5,0,0" Click="OnClick">Submit</Button>
-            <Button x:Name="nuke" Margin="0,5,0,0" Click="OnClickNuke">Nuke all data in SQL</Button>
+            <Button x:Name="nuke" Margin="0,5,0,0" Click="OnClickNuke">Delete all</Button>
         </StackPanel>
     </Grid>
 </Window>

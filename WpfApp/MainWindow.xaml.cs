@@ -119,10 +119,18 @@ namespace WpfApp
 
                     try
                     {
-                        if (names.Items.Count>0) {
-                            names.Items.Clear();
-                            deletecommand.ExecuteNonQuery(); 
-                        }else
+                        if (names.Items.Count > 0)
+                        {
+                            MessageBoxButton button = MessageBoxButton.YesNo;
+                            MessageBoxResult result;
+                            result = MessageBox.Show("Are you sure?", "", button);
+                            if (result == MessageBoxResult.Yes)
+                            {
+                                names.Items.Clear();
+                                deletecommand.ExecuteNonQuery();
+                            }
+                        }
+                        else
                         {
                             MessageBox.Show("List is Empty");
                         }
